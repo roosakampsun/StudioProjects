@@ -1,157 +1,50 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'theme.dart';
-
+import 'package:kalkulaator/view/Kalkulaator2.dart';
+import 'package:kalkulaator/view/Konverter1.dart';
+import 'view/theme.dart';
 
 void main() {
-  runApp(const Calculator());
+  runApp(const MyApp());
 }
 
-class Calculator extends StatelessWidget {
-  const Calculator({Key? key}) : super(key: key); //Muutumatu osa!!
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key); //Muutumatu osa!!
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //ThemeData.colorScheme: Colors.purpleAccent
+      routes: {
+        //routing teisele lehele, kus saab vaadata ajalugu
+        '/': (context) => MyHomePage(title: "Simple App",),
+           '/history': (context) => Konverter1App(),
+      },
+      title: "Calculator",
       theme: THEME_DATA,
-      home: LihtneKalkulaator(), // loome lihtsakalkulaatori objekti
-      debugShowCheckedModeBanner: false,
-    ); // TAGASTAME sisurakenduse
+      initialRoute: '/',
+    );
   }
 }
 
-class LihtneKalkulaator extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title})
+      : super(key: key); // Muutuv osa widgetid, mis paiknevad sees- kõrval
+
+  final String title;
+
   @override
-
-
-  _LihtneKalkulaatorState createState() => _LihtneKalkulaatorState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _LihtneKalkulaatorState extends State<LihtneKalkulaator> {
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    //standard kuidas ehitata üles sisu ja appbari enda rakendusse
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Kalkulaator')),
-     body: Container(
-        child: Column(
-          children: <Widget>[
-          Expanded(
-              child: Container(
-                padding: EdgeInsets.all(40.0),
-                alignment: Alignment.bottomRight,
-                child: Text(
-                  text,
-                  style: TextStyle(
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-           ),
-            Row(
-              //nupud meetodi kaudu ritta tabelisse
-              children: <Widget>[
-                customOutlineButton("7"),
-                customOutlineButton("8"),
-                customOutlineButton("9"),
-                customOutlineButton("+"),
-              ],
-            ),
-            Row(
-              //nupud meetodi kaudu ritta tabelisse
-              children: <Widget>[
-                customOutlineButton("4"),
-                customOutlineButton("5"),
-                customOutlineButton("6"),
-                customOutlineButton("-"),
-              ],
-            ),
-            Row(
-              //nupud meetodi kaudu ritta tabelisse
-              children: <Widget>[
-                customOutlineButton("1"),
-                customOutlineButton("2"),
-                customOutlineButton("3"),
-                customOutlineButton("x"),
-              ],
-            ),
-                Row(
-                  //nupud meetodi kaudu ritta tabelisse
-                  children: <Widget>[
-                    customOutlineButton("0"),
-                    customOutlineButton("C"),
-                    customOutlineButton("/"),
-                    customOutlineButton("="),
-                  ],
-                ),
-              ],
-            ),
-
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      );
-
-  }
-  Widget customOutlineButton(String val) {
-    //return Expanded(
-    //child:
-    return OutlinedButton(
-//funktsioon nupule
-      onPressed: () =>btnClicked(val),
-      child: Text (val, style: TextStyle(fontSize: 20.0),
-
-
-// lisan val
-        ),
-      );
-   // );
-  }
-
-//defineerin muutujad
-  late int first, second;
-  late String res, text = "";
-  late String opp;
-  void btnClicked(String buttonText) {
-    if (buttonText == "C") {
-      res = "";
-      text = "";
-      first = 0;
-      second = 0;
-    } else if (
-
-// juhul kui üks teine kolmas arvutus käitatakse
-        buttonText == "+" ||
-            buttonText == "-" ||
-            buttonText == "x" ||
-            buttonText == "/") {
-      first = int.parse(text);
-      res = "";
-      opp = buttonText;
-    } else if (buttonText == "=") {
-      second = int.parse(text);
-      if (opp == "+") {
-        res = (first + second).toString();
-      }
-      if (opp == "-") {
-        res = (first - second).toString();
-      }
-      if (opp == "x") {
-       res = (first*second).toString();
-      }
-      if (opp == "/") {
-        res = (first ~/ second).toString();
-      }
-    } else {
-      res = int.parse(text + buttonText).toString();
-    }
-
-    setState(() {
-      text =
-          res; //trükitud teksti set state, numbrid järjestikus lubatud tablool
-    });
+        body: Kalkulaator2());
   }
 }
-//astmel teha ei osanud

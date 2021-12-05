@@ -2,34 +2,17 @@ import 'package:flutter/material.dart';
 import 'theme.dart';
 //import 'dart:math';
 
+class  Kalkulaator2 extends StatefulWidget {
 
-void main() => runApp(new MyApp());
+  const Kalkulaator2({ Key? key,
+  }) : super(key: key);
 
-
-class MyApp extends StatelessWidget {
-  @override
-
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-     // title: 'Flutter Kalkulaator2',
-      theme: THEME_DATA,
-      home: new MyHomePage(title: 'Flutter Kalkulaator2 Application'), // Floating buttons, body
-    );
-  }
-
-}
-class MyHomePage extends StatefulWidget{
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() =>new _MyHomePageState();
-
-
+  State<StatefulWidget> createState() => Kalkulaator2State();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class Kalkulaator2State extends State<Kalkulaator2> {
+  late Future<Kalkulaator2> Kalkulaator2Future;
+
   //tegevused rakenduses, extends state class
 
   String output = "0"; // muutuja klass, et saada teksti infot kätte
@@ -115,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(// alati
 
       appBar: new AppBar(//alati
-        title: new Text(widget.title),
+        //title: new Text(widget.title),
         ),
         //User interfcase container algab
         body: new Container( //siia lisan enda user interface  //childe saab olla nii palju, kui ma tahan ja see on widgetite list

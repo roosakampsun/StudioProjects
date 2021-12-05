@@ -4,27 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'theme.dart';
 
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-   @override
-  Widget build(BuildContext context) {
-       return MaterialApp(
-           title: 'Konverter',
-           theme: THEME_DATA,
-      home: Scaffold (
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Konverter',
-          ),
-        ),
-        body:  Konverter1App(),
-      ));     // TAGASTAME sisurakenduse
-
-
-
-}
-}
 
 class Konverter1App extends StatefulWidget {
   @override
