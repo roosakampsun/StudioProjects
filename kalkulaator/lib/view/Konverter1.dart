@@ -1,18 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'theme.dart';
+
 
 
 
 class Konverter1App extends StatefulWidget {
+
+  static const String routeName = '/konverter';
+
   @override
 
 
-  _Konverter1AppState createState() => _Konverter1AppState();
+ _Konverter1AppState createState() => _Konverter1AppState();
 }
 
 class _Konverter1AppState extends State<Konverter1App> {
+
+
 
   final TextStyle labelStyle = TextStyle(
     fontSize: 16.0,
@@ -49,6 +54,8 @@ class _Konverter1AppState extends State<Konverter1App> {
 
   };
 
+
+// Scaffold not used nor built, do I need it?
 
   @override
   Widget build(BuildContext context) {
