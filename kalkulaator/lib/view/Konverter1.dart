@@ -59,7 +59,8 @@ class _Konverter1AppState extends State<Konverter1App> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView( // kasutatud parameetrit, mis eksisteerib
+    return Scaffold(
+      body: SingleChildScrollView( // kasutatud parameetrit, mis eksisteerib
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -150,6 +151,7 @@ class _Konverter1AppState extends State<Konverter1App> {
         ),
 
       ),
+    ),
     ); //SimpleScroll
   }
 
